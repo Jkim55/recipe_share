@@ -10,10 +10,11 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 
-gem 'haml'
-gem 'bootstrap-sass'
-gem 'simple_form'
-gem 'devise'
+gem 'haml', '~> 4.0', '>= 4.0.7'
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'simple_form', '~> 3.3', '>= 3.3.1'
+gem 'devise', '~> 4.2'
+gem 'paperclip', '~> 5.1'
 
 group :development, :test do
   gem 'byebug', platform: :mri

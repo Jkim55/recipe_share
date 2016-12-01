@@ -1,4 +1,7 @@
 .col-md-12
   %h1 Edit Recipe
+  %strong.center Current Image
+  %br/
+  = image_tag @recipe.image.url(:thumb)
   = render 'form'
   = link_to "Cancel", recipe_path
