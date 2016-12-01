@@ -15,3 +15,10 @@
 
 # Ignore Byebug command history file.
 .byebug_history
+
+
+# Ignore image upload files
+/public/system/movies/images
+
+# Ignore env variables
+local_env.yml
