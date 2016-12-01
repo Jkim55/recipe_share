@@ -1,11 +1,19 @@
-= image_tag @recipe.image.url(:large)
-%h2= @recipe.title
-%p= @recipe.description
-%p.user
-Submitted by:
-= @recipe.user.email
-%br/
-
-= link_to 'Back', root_path
-= link_to "Edit", edit_recipe_path, class: "btn btn-default"
-= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
+#pin_show.row
+  .col-md-8.col-md-offset-2
+    .panel.panel-default
+      .panel-heading.pin-image
+        = image_tag @recipe.image.url(:large)
+      .panel-body
+        %h2= @recipe.title
+        %p= @recipe.description
+      .panel-footer
+        .row
+          .col-md-6
+            %p.user
+            Submitted by:
+            = @recipe.user.username
+          .col-md-6
+            .btn-group.pull-right
+              - if user_signed_in? && (@recipe.user.id  == current_user.id)
+                = link_to "Edit", edit_recipe_path, class: "btn btn-default"
+                = link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
