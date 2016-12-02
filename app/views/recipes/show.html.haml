@@ -2,21 +2,51 @@
   .col-md-12
     .panel.panel-default
       .panel-heading.pin-image
-        = image_tag @recipe.image.url(:large)
+        .row
+          .col-md-8
+            = image_tag @recipe.image.url(:large)
+          .col-md-4
+            .row
+              .col-md-12
+                %h2= @recipe.title
+              .col-md-12
+                = link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default btn-xs" do
+                  %span.glyphicon.glyphicon-heart
+                    = @recipe.get_upvotes.size
+                - if user_signed_in? && (@recipe.user.id  == current_user.id)
+                  = link_to "Edit", edit_recipe_path, class: "btn btn-default btn-xs"
+                  = link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default btn-xs"
+              .col-md-12
+                %br/
+                %p= @recipe.description
+            -# .row
+            -#   .col-md-12
+            -#     .btn-group.pull-left
+            -#       = link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default" do
+            -#         %span.glyphicon.glyphicon-heart
+            -#           = @recipe.get_upvotes.size
+            -#       - if user_signed_in? && (@recipe.user.id  == current_user.id)
+            -#         = link_to "Edit", edit_recipe_path, class: "btn btn-default"
+            -#         = link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
+
       .panel-body
-        %h2= @recipe.title
-        %p= @recipe.description
+        .row
+          .col-md-4
+            #ingredients
+              %h2 Ingredients
+              %ul
+                - @recipe.ingredients.each do |ingredient|
+                  %li= ingredient.name
+          .col-md-9
+            #directions
+              %h2 Directions
+              %ul
+                - @recipe.directions.each do |direction|
+                  %li= direction.step
       .panel-footer
         .row
-          .col-md-6
+          .col-md-12
             %p.user
-            Submitted by:
+            %span.glyphicon.glyphicon-cutlery
+            Shared by
             = @recipe.user.username
-          .col-md-6
-            .btn-group.pull-right
-              = link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default" do
-                %span.glyphicon.glyphicon-heart
-                  = @recipe.get_upvotes.size
-              - if user_signed_in? && (@recipe.user.id  == current_user.id)
-                = link_to "Edit", edit_recipe_path, class: "btn btn-default"
-                = link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
