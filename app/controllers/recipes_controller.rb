@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :find_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :find_recipe, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :authenticate_user!, except:[:index, :show]
 
   def index
     @recipe = Recipe.all.order("created_at DESC")
@@ -36,6 +37,11 @@ class RecipesController < ApplicationController
   def destroy
     @recipe.destroy()
     redirect_to root_path, notice: "Successfully deleted recipe"
+  end
+
+  def upvote
+    @recipe.upvote_by current_user
+    redirect_to :back
   end
 
   private
