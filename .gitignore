@@ -18,7 +18,7 @@
 
 
 # Ignore image upload files
-/public/system/movies/images
+public/system/recipes/images
 
 # Ignore env variables
 local_env.yml
