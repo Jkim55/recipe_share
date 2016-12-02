@@ -27,14 +27,18 @@
               %h2 Ingredients
               %ul
                 - @recipe.ingredients.each do |ingredient|
-                  %li= link_to ingredient.name, ingredient.image.url(:med)
+                  %li= ingredient.name
+                  - if ingredient.image?
+                    %span= link_to 'View Ingredient', ingredient.image.url(:med)
+
           .col-md-9
             #directions
               %h2 Directions
               %ul
                 - @recipe.directions.each do |direction|
-                  %li= direction.step 
-                  -# %li= link_to direction.step, direction.image.url(:med)
+                  %li= direction.step
+                  -# - if direction.image?
+                  -#   %li= link_to "View an Image", direction.image.url(:med)
 
       .panel-footer
         .row
