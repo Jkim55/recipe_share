@@ -12,22 +12,13 @@
               .col-md-12
                 = link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default btn-xs" do
                   %span.glyphicon.glyphicon-heart
-                    = @recipe.get_upvotes.size
+                  = @recipe.get_upvotes.size
                 - if user_signed_in? && (@recipe.user.id  == current_user.id)
                   = link_to "Edit", edit_recipe_path, class: "btn btn-default btn-xs"
                   = link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default btn-xs"
               .col-md-12
                 %br/
                 %p= @recipe.description
-            -# .row
-            -#   .col-md-12
-            -#     .btn-group.pull-left
-            -#       = link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default" do
-            -#         %span.glyphicon.glyphicon-heart
-            -#           = @recipe.get_upvotes.size
-            -#       - if user_signed_in? && (@recipe.user.id  == current_user.id)
-            -#         = link_to "Edit", edit_recipe_path, class: "btn btn-default"
-            -#         = link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default"
 
       .panel-body
         .row
@@ -37,12 +28,18 @@
               %ul
                 - @recipe.ingredients.each do |ingredient|
                   %li= ingredient.name
+                  - if ingredient.image?
+                    %span= link_to 'View Ingredient', ingredient.image.url(:med)
+
           .col-md-9
             #directions
               %h2 Directions
               %ul
                 - @recipe.directions.each do |direction|
                   %li= direction.step
+                  -# - if direction.image?
+                  -#   %li= link_to "View an Image", direction.image.url(:med)
+
       .panel-footer
         .row
           .col-md-12
@@ -50,3 +47,5 @@
             %span.glyphicon.glyphicon-cutlery
             Shared by
             = @recipe.user.username
+            on
+            = @recipe.updated_at

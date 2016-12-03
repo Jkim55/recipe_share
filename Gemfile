@@ -13,11 +13,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml', '~> 4.0', '>= 4.0.7'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
-gem 'cocoon', '~> 1.2', '>= 1.2.9'
-gem 'devise', '~> 4.2'
 gem 'paperclip', '~> 5.1'
-gem 'masonry-rails', '~> 0.2.4'
+
+gem 'paperclip-av-transcoder', '~> 0.6.4'
+
+gem 'devise', '~> 4.2'
+gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'masonry-rails', '~> 0.2.4'
 
 group :development, :test do
   gem 'byebug', platform: :mri

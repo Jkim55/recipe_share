@@ -1,14 +1,17 @@
 !!! 5
 %html
 %head
-  %title Family Cookbook
+  %title Recipe Share
   = csrf_meta_tags
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  = stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Lato:100,300,400,700'
+  = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Julius+Sans+One'
+
 %body
 %nav.navbar.navbar-default
   .container
-    .navbar-brand= link_to "Family Cookbook", root_path
+    .navbar-brand= link_to "RECIPE SHARE", root_path
 
     - if user_signed_in?
       %ul.nav.navbar-nav.navbar-right
