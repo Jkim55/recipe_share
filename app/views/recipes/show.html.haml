@@ -49,7 +49,7 @@
               %span Posted by
               %span= comment.user_id
               %span on
-              %span= comment.created_at=======
+              %span= comment.created_at
               %span= comment.user.email
               - if user_signed_in? && comment.user_id  == current_user.id
                 -# TODO: refactor the forms out out this view
