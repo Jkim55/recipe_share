@@ -42,6 +42,9 @@
               %span= comment.content
               %span Posted by
               %span= comment.user_id
+              %span on
+              %span= comment.created_at
+
               - if user_signed_in? && comment.user_id  == current_user.id
                 = link_to "X", recipe_comment_path(@recipe, comment.id), method: :delete, class: "btn btn-default btn-sm"
 
