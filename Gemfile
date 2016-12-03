@@ -15,8 +15,6 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'simple_form', '~> 3.3', '>= 3.3.1'
 gem 'paperclip', '~> 5.1'
 
-gem 'paperclip-av-transcoder', '~> 0.6.4'
-
 gem 'devise', '~> 4.2'
 gem 'cocoon', '~> 1.2', '>= 1.2.9'
 gem 'acts_as_votable', '~> 0.10.0'

@@ -44,6 +44,11 @@
 #recipe_show {
   .panel-heading {
     padding: 0;
+    p {
+      margin: 0 35px 10px 0;
+      font-size: small;
+      font-weight: 200;
+    }
   }
   .pin_image {
     img {
@@ -69,8 +74,8 @@
     p {
       margin: 0;
     }
-    .user {
-      padding-top: 8px;
+    span {
+      padding-right: 8px;
     }
   }
 }

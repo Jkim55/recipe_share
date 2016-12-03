@@ -1,6 +1,6 @@
 .form-inline.clearfix
   .nested-fields
     = f.input :step, input_html: { class: 'form-input form-control' }
-    -# = f.input :image, input_html: { class: 'form-input form-control' }
+    -# = f.file_field :image, input_html: { class: 'form-input form-control' }
 
-    = link_to_remove_association "Remove", f, class: "form-button btn btn-default"
+    = link_to_remove_association "Remove", f, class: "form-button btn btn-default btn-xs"
