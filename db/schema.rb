@@ -27,9 +27,13 @@ ActiveRecord::Schema.define(version: 20161203154957) do
 
   create_table "directions", force: :cascade do |t|
     t.text     "step"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.integer  "recipe_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.index ["recipe_id"], name: "index_directions_on_recipe_id", using: :btree
   end
 

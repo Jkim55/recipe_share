@@ -1,6 +1,18 @@
 class Direction < ApplicationRecord
   belongs_to :recipe
 
-  # has_attached_file :image, styles: { med: "400x400>", thumb: "100x100>"  }
-  # validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
+  has_attached_file :attachment, styles: {
+	  medium: {geometry: "640x480>", format:'mp4', convert_options: {
+      input: {},
+      output: {
+        vcodec: 'libx264',
+        movflags: '+faststart',
+        strict: :experimental
+      }
+  	}
+	},
+		thumb: {geometry: "100x100#", format:'jpg', time: 10}
+	}, processors: [:transcoder]
+	validates_attachment_content_type :attachment, content_type: /\Avideo\/.*\Z/
+	validates_attachment :attachment, size: {less_than: 130.megabytes}
 end
