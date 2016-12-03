@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :recipes
+  has_many :comments, dependent: :destroy
+
 end

@@ -4,6 +4,7 @@ class Recipe < ApplicationRecord
 
   has_many :ingredients, dependent: :destroy
   has_many :directions, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   accepts_nested_attributes_for :ingredients,
                               reject_if: proc { |attributes| attributes['name'].blank? },

@@ -3,12 +3,12 @@
     .panel.panel-default
       .panel-heading.pin-image
         .row
-          .col-md-8
-            = image_tag @recipe.image.url(:large)
           .col-md-4
+            = image_tag @recipe.image.url(:large)
+          .col-md-4.col-md-offset-4
             .row
               .col-md-12
-                %h2= @recipe.title
+                %h1= @recipe.title
               .col-md-12
                 = link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default btn-xs" do
                   %span.glyphicon.glyphicon-heart
@@ -23,29 +23,37 @@
       .panel-body
         .row
           .col-md-4
-            #ingredients
-              %h2 Ingredients
-              %ul
-                - @recipe.ingredients.each do |ingredient|
-                  %li= ingredient.name
-                  - if ingredient.image?
-                    %span= link_to 'View Ingredient', ingredient.image.url(:med)
+            %h2 Ingredients
+            - @recipe.ingredients.each do |ingredient|
+              %p= ingredient.name
+              - if ingredient.image?
+                %span= link_to 'View Ingredient', ingredient.image.url(:med)
+          .col-md-8
+            %h2 Directions
+            - @recipe.directions.each do |direction|
+              %p= direction.step
+              -# - if direction.video?
+              -#   %li= link_to "View an Video", direction.video.url(:med)
 
-          .col-md-9
-            #directions
-              %h2 Directions
-              %ul
-                - @recipe.directions.each do |direction|
-                  %li= direction.step
-                  -# - if direction.image?
-                  -#   %li= link_to "View an Image", direction.image.url(:med)
-
-      .panel-footer
         .row
           .col-md-12
-            %p.user
-            %span.glyphicon.glyphicon-cutlery
-            Shared by
-            = @recipe.user.username
-            on
-            = @recipe.updated_at
+            %h3 Comments
+            - @recipe.comments.each do |comment|
+              %span= comment.content
+              %span Posted by
+              %span= comment.user_id
+              - if user_signed_in? && comment.user_id  == current_user.id
+                = link_to "X", recipe_comment_path(@recipe, comment.id), method: :delete, class: "btn btn-default btn-sm"
+
+            - if user_signed_in?
+              %p= render 'comment_form'
+            - else
+              %p= link_to "Sign in to comment", new_user_session_path
+
+      .panel-footer
+        %p.user
+        %span.glyphicon.glyphicon-cutlery
+        Shared by
+        = @recipe.user.username
+        on
+        = @recipe.updated_at
