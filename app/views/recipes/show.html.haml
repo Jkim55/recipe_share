@@ -25,31 +25,39 @@
           .col-md-4
             %h2 Ingredients
             - @recipe.ingredients.each do |ingredient|
-              %p= ingredient.name
+              %p
+              %span= ingredient.name
               - if ingredient.image?
-                %span= link_to 'View Ingredient', ingredient.image.url(:med)
+                %span= link_to 'Ingredient Image', ingredient.image.url(:med)
+                -# =image_tag ingredient.image.url(:med)
           .col-md-8
             %h2 Directions
             - @recipe.directions.each do |direction|
-              %p= direction.step
-              -# - if direction.video?
-              -#   %li= link_to "View an Video", direction.video.url(:med)
+              %p
+              %span= direction.step
+              - if direction.attachment?
+                %span= link_to 'Video Clip', direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
+                -# =video_tag direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
 
         .row
           .col-md-12
             %h3 Comments
             - @recipe.comments.each do |comment|
+              %p
               %span= comment.content
+              %span *
               %span Posted by
               %span= comment.user_id
               %span on
-              %span= comment.created_at
-
+              %span= comment.created_at=======
+              %span= comment.user.email
               - if user_signed_in? && comment.user_id  == current_user.id
-                = link_to "X", recipe_comment_path(@recipe, comment.id), method: :delete, class: "btn btn-default btn-sm"
+                -# TODO: refactor the forms out out this view
+                -# TODO: add an edit button
+                = link_to "delete", recipe_comment_path(@recipe, comment.id), method: :delete, class: "btn btn-default btn-xs"
 
             - if user_signed_in?
-              %p= render 'comment_form'
+              %p= render 'comments_form'
             - else
               %p= link_to "Sign in to comment", new_user_session_path
 

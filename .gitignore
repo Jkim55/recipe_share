@@ -19,8 +19,9 @@
 
 # Ignore image upload files
 public/system/recipes/images
-public/system/directions/images
+public/system/directions/attachments
 public/system/ingredients/images
+
 
 # Ignore env variables
 local_env.yml
