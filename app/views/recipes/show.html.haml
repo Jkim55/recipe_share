@@ -10,23 +10,39 @@
               .col-md-12
                 %h1= @recipe.title
               .col-md-12
+                Shared by
+                = @recipe.user.username
+                -# on
+                -# = @recipe.updated_at
+
+              .col-md-12
+                %p
                 = link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default btn-xs" do
                   %span.glyphicon.glyphicon-heart
                   = @recipe.get_upvotes.size
                 - if user_signed_in? && (@recipe.user.id  == current_user.id)
                   = link_to "Edit", edit_recipe_path, class: "btn btn-default btn-xs"
                   = link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default btn-xs"
+
               .col-md-12
                 %br/
                 %p= @recipe.description
 
                 %h4 Dietary Restrictions
-                - @recipe.categories.each do |c|
-                  %p= c.name
+                %ul
+                - if @recipe.categories.length == 0
+                  %li No Dietary Restrictions
+                - else
+                  - @recipe.categories.each do |c|
+                    %li= c.name
 
                 %h4 Meal/Course
-                - @recipe.courses.each do |c|
-                  %p= c.name
+                %ul
+                - if @recipe.courses.length == 0
+                  %li No Dietary Restrictions
+                - else
+                  - @recipe.courses.each do |c|
+                    %li= c.name
 
       .panel-body
         .row
@@ -46,19 +62,15 @@
               - if direction.attachment?
                 %span= link_to 'Video Clip', direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
                 -# =video_tag direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
+
+      .panel-footer
         .row
           .col-md-12
             %h3 Comments
+            %p
             = render @recipe.comments
+            %br/
             - if user_signed_in?
               %p= render "comments/form"
             - else
               %p= link_to "Sign in to comment", new_user_session_path
-
-      .panel-footer
-        %p
-        %span.glyphicon.glyphicon-cutlery
-        This recipe was shared by
-        = @recipe.user.username
-        on
-        = @recipe.updated_at

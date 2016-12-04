@@ -2,9 +2,9 @@
   .content
     %p
     %span.comment_content= comment.content
-    %span ||
-    %spanp.comment_author= comment.user.username
-    %span @
+    %p
+    %span.comment_author= comment.user.username
+    %span.glyphicon.glyphicon-cutlery
     %span= comment.created_at
     - if user_signed_in? && comment.user_id  == current_user.id
       = link_to "Edit", edit_recipe_comment_path(comment.recipe, comment)

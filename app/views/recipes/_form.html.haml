@@ -21,7 +21,9 @@
 
   .form-group
     = f.collection_check_boxes :category_ids, Category.all, :id, :name, { prompt: "Choose dietary restriction(s)" }
+    %br/
     = f.collection_check_boxes :course_ids, Course.all, :id, :name, { prompt: "Choose a course", selected: :course_ids}
+    -# = f.collection_select :course_ids, Course.all, :id, :name, { prompt: "Choose a course", selected: :course_ids}, { multiple: true }  # this works
 
     .row
       .col-md-6
