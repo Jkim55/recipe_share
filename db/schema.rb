@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161203154957) do
+ActiveRecord::Schema.define(version: 20161204042004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories_recipes", id: false, force: :cascade do |t|
+    t.integer "recipe_id",   null: false
+    t.integer "category_id", null: false
+    t.index ["category_id", "recipe_id"], name: "index_categories_recipes_on_category_id_and_recipe_id", using: :btree
+    t.index ["recipe_id", "category_id"], name: "index_categories_recipes_on_recipe_id_and_category_id", using: :btree
+  end
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["category_id"], name: "index_categorizations_on_category_id", using: :btree
+    t.index ["recipe_id"], name: "index_categorizations_on_recipe_id", using: :btree
+  end
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -95,6 +117,8 @@ ActiveRecord::Schema.define(version: 20161203154957) do
     t.index ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
   end
 
+  add_foreign_key "categorizations", "categories"
+  add_foreign_key "categorizations", "recipes"
   add_foreign_key "comments", "recipes"
   add_foreign_key "comments", "users"
   add_foreign_key "directions", "recipes"

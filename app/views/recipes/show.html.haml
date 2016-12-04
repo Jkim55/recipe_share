@@ -20,6 +20,10 @@
                 %br/
                 %p= @recipe.description
 
+                %h4 Dietary Restrictions
+                - @recipe.categories.each do |c|
+                  %p= c.name
+
       .panel-body
         .row
           .col-md-4
