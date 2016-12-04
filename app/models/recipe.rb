@@ -2,8 +2,8 @@ class Recipe < ApplicationRecord
   acts_as_votable
   belongs_to :user
 
-  has_many :categorizations, dependent: :destroy
-  has_many :categories, :through => :categorizations, dependent: :destroy
+  has_many :category_recipes, dependent: :destroy
+  has_many :categories, :through => :category_recipes, dependent: :destroy
 
   has_many :ingredients, dependent: :destroy
   has_many :directions, dependent: :destroy
