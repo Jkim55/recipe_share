@@ -5,6 +5,9 @@ class Recipe < ApplicationRecord
   has_many :category_recipes, dependent: :destroy
   has_many :categories, :through => :category_recipes, dependent: :destroy
 
+  has_many :course_recipes, dependent: :destroy
+  has_many :courses, :through => :course_recipes, dependent: :destroy
+
   has_many :ingredients, dependent: :destroy
   has_many :directions, dependent: :destroy
   has_many :comments, dependent: :destroy

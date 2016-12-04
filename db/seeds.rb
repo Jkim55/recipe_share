@@ -18,3 +18,18 @@ dietary_restrictions = [
 dietary_restrictions.each do |name|
   Category.create( name: name )
 end
+
+meals_courses = [
+  "Breakfast",
+  "Brunch",
+  "Lunch",
+  "Dinner",
+  "Appetizer",
+  "Side",
+  "Dessert",
+  "Beverage"
+]
+
+meals_courses.each do |name|
+  Course.create( name: name )
+end
