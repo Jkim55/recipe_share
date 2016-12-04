@@ -38,33 +38,19 @@
               - if direction.attachment?
                 %span= link_to 'Video Clip', direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
                 -# =video_tag direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
-
         .row
           .col-md-12
             %h3 Comments
-            - @recipe.comments.each do |comment|
-              %p
-              %span= comment.content
-              %span *
-              %span Posted by
-              %span= comment.user_id
-              %span on
-              %span= comment.created_at
-              %span= comment.user.email
-              - if user_signed_in? && comment.user_id  == current_user.id
-                -# TODO: refactor the forms out out this view
-                -# TODO: add an edit button
-                = link_to "delete", recipe_comment_path(@recipe, comment.id), method: :delete, class: "btn btn-default btn-xs"
-
+            = render @recipe.comments
             - if user_signed_in?
-              %p= render 'comments_form'
+              %p= render "comments/form"
             - else
               %p= link_to "Sign in to comment", new_user_session_path
 
       .panel-footer
-        %p.user
+        %p
         %span.glyphicon.glyphicon-cutlery
-        Shared by
+        This recipe was shared by
         = @recipe.user.username
         on
         = @recipe.updated_at

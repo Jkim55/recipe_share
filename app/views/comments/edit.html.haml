@@ -1,0 +1,9 @@
+.col-md-10.col-md-offset-1
+  .row
+  .panel.panel-default
+    .panel-heading
+      %h2 Edit Comment
+    .panel-body
+      = simple_form_for([@recipe, @comment]) do |f|
+        = f.input :content
+        = f.submit
