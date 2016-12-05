@@ -16,12 +16,11 @@
 # Ignore Byebug command history file.
 .byebug_history
 
-
 # Ignore image upload files
-public/system/recipes/images
-public/system/directions/attachments
-public/system/ingredients/images
+public/system/recipes
+public/system/directions
+public/system/ingredients
 
 
-# Ignore env variables
-local_env.yml
+# Ignore application configuration
+/config/application.yml
