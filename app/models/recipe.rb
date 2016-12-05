@@ -19,7 +19,7 @@ class Recipe < ApplicationRecord
                               reject_if: proc { |attributes| attributes['step'].blank? },
                               allow_destroy: true
 
-  validates :title, :description, :image, presence: true
+  validates :title, :description, :serving, :image, presence: true
 
   has_attached_file :image, styles: { large: "750x750>", thumb: "200x200>"  }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
