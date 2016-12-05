@@ -31,7 +31,7 @@
                 %h4 Dietary Restrictions
                 %ul
                 - if @recipe.categories.length == 0
-                  %li No Dietary Restrictions
+                  %li No Dietary Accommodations Listed
                 - else
                   - @recipe.categories.each do |c|
                     %li= c.name
@@ -39,7 +39,7 @@
                 %h4 Meal/Course
                 %ul
                 - if @recipe.courses.length == 0
-                  %li No Dietary Restrictions
+                  %li No Courses Indicated
                 - else
                   - @recipe.courses.each do |c|
                     %li= c.name
@@ -52,16 +52,15 @@
               %p
               %span= ingredient.name
               - if ingredient.image?
-                %span= link_to 'Ingredient Image', ingredient.image.url(:med)
-                -# =image_tag ingredient.image.url(:med)
+                %span= link_to glyph(:camera), ingredient.image.url(:med), data: {toggle: "modal", target: "#modal"}
+
           .col-md-8
             %h2 Directions
             - @recipe.directions.each do |direction|
               %p
               %span= direction.step
               - if direction.attachment?
-                %span= link_to 'Video Clip', direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
-                -# =video_tag direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
+                %span= link_to glyph(:facetime_video), direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
 
       .panel-footer
         .row
