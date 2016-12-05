@@ -62,6 +62,8 @@
               %span= direction.step
               - if direction.attachment?
                 %span= link_to glyph(:facetime_video), direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
+              - if direction.dir_image?
+                %span= link_to glyph(:camera), direction.dir_image.url(:medium)
 
       .panel-footer
         .row
