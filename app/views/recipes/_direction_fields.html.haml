@@ -1,6 +1,16 @@
 .form-inline.clearfix
   .nested-fields
-    = f.input :step, input_html: { class: 'form-input form-control' }
-    = f.file_field :attachment, input_html: { class: 'form-input form-control' }
-    = f.file_field :dir_image, input_html: { class: 'form-input form-control' }
-    = link_to_remove_association "Remove", f, class: "form-button btn btn-default btn-xs"
+    .row
+      .form-group
+      = f.label "Description"
+      = f.input :step, input_html: { class: 'description' }, label: false
+    .row
+      .form-group
+      = f.label "Attach A Video Clip"
+      = f.file_field :attachment, input_html: { class: 'form-input form-control' }, label: false
+      .form-group
+      = f.label "Attach an Image"
+      = f.file_field :dir_image, input_html: { class: 'form-input form-control' }, label: false
+    .row
+      .form-group
+      = link_to_remove_association "Remove", f, class: "form-button btn btn-default btn-xs"

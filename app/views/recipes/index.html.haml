@@ -5,18 +5,6 @@
         = link_to (image_tag r.image.url), r
         .panel-body
           %h2= link_to r.title, r
-        -# -#  quick & easy
-        -# %span.glyphicon.glyphicon-stopwatch
-        -# -# vegetarian
-        -# %span.glyphicon.glyphicon-flower
-        -# -# pescatarian
-        -# %span.glyphicon.glyphicon-fishes
-        -# -# breakfast, lunch, dinner, or brunch
-        -# %span.glyphicon.glyphicon-dining-set
-        -# -# appetizer or side
-        -# %span.glyphicon.glyphicon-plus
-        -# -# dessert
-        -# %span.glyphicon.glyphicon-cake
 - else
   %h3 There are no posts containing the title:
   %h3= params[:search]

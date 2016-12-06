@@ -9,44 +9,48 @@
           %li= msg
 
   .form-group
-    = f.input :title, input_html: { class: 'form-control' }
+    = f.label "Title*"
+    = f.input :title, input_html: { class: 'form-control' }, label: false
 
   .form-group
-    = f.input :description, input_html: { class: 'form-control' }
+    = f.label "Description*"
+    = f.input :description, input_html: { class: 'form-control' }, label: false
 
   .form-group
-    = f.input :serving, input_html: { class: 'form-control' }
+    = f.label "Number of Servings*"
+    = f.number_field :serving, input_html: { class: 'form-control', min: '0', step: 'any' }, label: false
 
   .form-group
-    = f.label :image
-    = f.file_field :image, input_html: { class: 'form-control'}
+    = f.label "Add an Image*"
+    = f.file_field :image, input_html: { class: 'form-control'}, label: false
+
+  .form-check
+    = f.label "Dietary Restrictions"
+    = f.collection_check_boxes :category_ids, Category.all, :id, :name, { prompt: "Choose dietary restriction(s)" }, input_html: { class: 'form-check-input'}, label: false
+
+  .form-check
+    = f.label "Course/Meal", input_html: { class: 'form-check-label'}
+    = f.collection_check_boxes :course_ids, Course.all, :id, :name, { prompt: "Choose a course", selected: :course_ids}, input_html: { class: 'form-check-input'}, label: false
 
   .form-group
-    -# %p= f.label :category
-    = f.label :category
-    = f.collection_check_boxes :category_ids, Category.all, :id, :name, { prompt: "Choose dietary restriction(s)" }
-
-  .form-group
-    -# %p= f.label :course
-    = f.label :course
-    = f.collection_check_boxes :course_ids, Course.all, :id, :name, { prompt: "Choose a course", selected: :course_ids}
-    -# = f.collection_select :course_ids, Course.all, :id, :name, { prompt: "Choose a course", selected: :course_ids}, { multiple: true }  # this works
-
-    .row
-      .col-md-6
+    .col-md-6
+      .row
         %h3 Ingredients
-        #ingredients
-          = f.simple_fields_for :ingredients do |ingredient|
-            = render 'ingredient_fields', f: ingredient
-          .links
-            = link_to_add_association 'Add Ingredient', f, :ingredients, class: "btn btn-default add-button btn-xs"
-
-      .col-md-6
+      #ingredients
+      .row
+        = f.simple_fields_for :ingredients do |ingredient|
+          = render 'ingredient_fields', f: ingredient
+        .links
+        = link_to_add_association 'Add Ingredient', f, :ingredients, class: "btn btn-default add-button btn-xs"
+  .form-group
+    .col-md-6
+      .row
         %h3 Directions
-        #directions
-          = f.simple_fields_for :directions do |direction|
-            = render 'direction_fields', f: direction
-          .links
-            = link_to_add_association 'Add Step', f, :directions, class: "btn btn-default add-button btn-xs"
+      #directions
+      .row
+        = f.simple_fields_for :directions do |direction|
+          = render 'direction_fields', f: direction
+        .links
+        = link_to_add_association 'Add Step', f, :directions, class: "btn btn-default add-button btn-xs"
 
   = f.button :submit, class: "btn btn-primary"

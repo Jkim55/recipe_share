@@ -4,6 +4,8 @@
 
 #recipes {
   margin: 0 auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
   width: 100%;
   .box {
     margin: 10px;
@@ -32,16 +34,11 @@
                     }
 }
 
-#edit_page {
-  .current_image {
-    img {
-      display: block;
-      margin: 20px 0;
-    }
-  }
-}
 
 #recipe_show {
+  .panel {
+    margin: 20px;
+  }
   .panel-heading {
     padding: 0;
     p {
@@ -49,13 +46,17 @@
       font-size: small;
       font-weight: 200;
     }
+    .words {
+      padding:35px;
+    }
   }
   .pin_image {
     img {
-      max-width: 100%;
-      width: 100%;
       display: block;
-      margin: 0 auto;
+      max-width:750px;
+      max-height:450px;
+      width: auto;
+      height: auto;
     }
   }
   .panel-body {
@@ -80,6 +81,22 @@
   }
 }
 
+#recipe_edit {
+  .main {
+    margin: 20px;
+  }
+  .current_image {
+    img {
+      display: block;
+      margin: 20px 0;
+    }
+  }
+}
+
 textarea {
-  min-height: 250px;
+  min-height: 100px;
+}
+textarea.description {
+  min-height: 100px;
+  min-width: 35em
 }

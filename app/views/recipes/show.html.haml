@@ -1,49 +1,44 @@
 #recipe_show.row
   .col-md-12
     .panel.panel-default
-      .panel-heading.pin-image
+      .panel-heading
         .row
-          .col-md-4
-            = image_tag @recipe.image.url(:large)
-          .col-md-4.col-md-offset-4
+          .col-md-3
+            .pin-image
+              = image_tag @recipe.image.url(:large)
+          .col-md-3.col-md-offset-5
             .row
               .col-md-12
                 %h1= @recipe.title
               .col-md-12
-                Shared by
-                = @recipe.user.username
-                -# on
-                -# = @recipe.updated_at
+                %p Shared by #{@recipe.user.username}
 
               .col-md-12
                 %p
                 = link_to like_recipe_path(@recipe), method: :put, class: "btn btn-default btn-xs" do
-                  %span.glyphicon.glyphicon-heart
-                  = @recipe.get_upvotes.size
+                  %span #{glyph(:heart)} #{@recipe.get_upvotes.size}
                 - if user_signed_in? && (@recipe.user.id  == current_user.id)
                   = link_to "Edit", edit_recipe_path, class: "btn btn-default btn-xs"
                   = link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default btn-xs"
 
               .col-md-12
                 %br/
-                %p= @recipe.description
+                %p.description= @recipe.description
                 %p #{@recipe.serving} servings
 
                 %h4 Dietary Restrictions
-                %ul
                 - if @recipe.categories.length == 0
-                  %li No Dietary Accommodations Listed
+                  %p No Dietary Accommodations Listed
                 - else
                   - @recipe.categories.each do |c|
-                    %li= c.name
+                    %p= c.name
 
                 %h4 Meal/Course
-                %ul
                 - if @recipe.courses.length == 0
-                  %li No Courses Indicated
+                  %p No Courses Indicated
                 - else
                   - @recipe.courses.each do |c|
-                    %li= c.name
+                    %p= c.name
 
       .panel-body
         .row
@@ -53,7 +48,7 @@
               %p
               %span= ingredient.name
               - if ingredient.image?
-                %span= link_to glyph(:camera), ingredient.image.url(:med), data: {toggle: "modal", target: "#modal"}
+                %span= link_to glyph(:camera), ingredient.image.url(:medium), data: {toggle: "modal", target: "#modal"}
 
           .col-md-8
             %h2 Directions

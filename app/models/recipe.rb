@@ -21,11 +21,10 @@ class Recipe < ApplicationRecord
 
   validates :title, :description, :serving, :image, presence: true
 
-  has_attached_file :image, styles: { large: "750x750>", thumb: "200x200>"  }
+  has_attached_file :image, styles: { large: "750x450#", thumb: "200x200>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   def self.search(search)
     where("title ILIKE ?", "%#{search}%")
-    where("description ILIKE ?", "%#{search}%")
   end
 end

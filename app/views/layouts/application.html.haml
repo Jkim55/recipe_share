@@ -1,7 +1,7 @@
 !!! 5
 %html
 %head
-  %title Recipe Share
+  %title Family Dish / Share Dish
   = csrf_meta_tags
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -9,26 +9,28 @@
   = stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Julius+Sans+One'
 
 %body
-%nav.navbar.navbar-default
-  .container
-    .navbar-brand= link_to "RECIPE SHARE", root_path
+  %nav.navbar.navbar-default
+    .container
+      .row
+        .navbar-brand= link_to "Nom Shares", recipes_path
+        %ul.nav.navbar-nav.navbar-right
+          %form.navbar-form.navbar-right.form-group
+            = form_tag(recipes_path, method: :get, id: "search-form") do
+              = text_field_tag :search, params[:search], placeholder: "Search Recipes"
+              = submit_tag "Search"
+          - if user_signed_in?
+            %li= link_to "Add a Recipe", new_recipe_path
+            %li= link_to "Account", edit_user_registration_path
+            %li= link_to "Sign Out", destroy_user_session_path, method: :delete
+          - else
+            %li= link_to "Register", new_user_registration_path
+            %li= link_to "Sign In", new_user_session_path
+      .row
+        %p Dishing out on your favorite family recipes
 
-    %ul.nav.navbar-nav.navbar-right
-      %li
-        = form_tag(recipes_path, method: :get, id: "search-form") do
-          = text_field_tag :search, params[:search], placeholder: "Search Recipes"
-          = submit_tag "Search"
 
-      - if user_signed_in?
-        %li= link_to "Add a Recipe", new_recipe_path
-        %li= link_to "Account", edit_user_registration_path
-        %li= link_to "Sign Out", destroy_user_session_path, method: :delete
-      - else
-        %li= link_to "Register", new_user_registration_path
-        %li= link_to "Sign In", new_user_session_path
+  .container.main
+    - flash.each do |name, msg|
+      = content_tag :div, msg, class: "alert"
 
-.container
-  - flash.each do |name, msg|
-    = content_tag :div, msg, class: "alert"
-
-  = yield
+    = yield

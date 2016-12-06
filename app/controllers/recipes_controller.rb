@@ -2,9 +2,12 @@ class RecipesController < ApplicationController
   before_action :find_recipe, only: [:show, :edit, :update, :destroy, :upvote]
   before_action :authenticate_user!, except:[:index, :show]
 
-  # def index
-  #   @recipe = Recipe.all.order("created_at DESC")
-  # end
+  def index
+    @recipe = Recipe.where(nil)
+    filtering_params(params).each do |key, value|
+      @recipe = @recipe.public_send(key, value) if value.present?
+    end
+  end
 
   def index
     @recipe = Recipe.all
@@ -45,7 +48,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe.destroy()
-    redirect_to root_path, notice: "Successfully deleted recipe"
+    redirect_to recipes_path, notice: "Successfully deleted recipe"
   end
 
   def upvote

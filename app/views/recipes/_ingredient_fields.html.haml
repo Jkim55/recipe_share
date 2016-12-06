@@ -1,6 +1,13 @@
 .form-inline.clearfix
   .nested-fields
-    = f.input :name, input_html: { class: 'form-input form-control' }
-    = f.file_field :image, input_html: { class: 'form-input form-control' }
-
-    = link_to_remove_association "Remove", f, class: "form-button btn btn-default btn-xs"
+    .row
+      .form-group
+      = f.label "Description"
+      = f.input :name, input_html: { class: 'form-control' }, label: false
+    .row
+      .form-group
+      = f.label "Attach an Image"
+      = f.file_field :image, input_html: { class: 'ingredient_field' }, label: false
+    .row
+      .form-group
+      = link_to_remove_association "Remove", f, class: "form-button btn btn-default btn-xs"

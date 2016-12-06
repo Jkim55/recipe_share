@@ -17,7 +17,7 @@ class Direction < ApplicationRecord
 	validates_attachment_content_type :attachment, content_type: /\Avideo\/.*\Z/
 	validates_attachment :attachment, size: {less_than: 130.megabytes}
 
-  has_attached_file :dir_image, styles: { large: "600x600>", medium: "300x300>" }
+  has_attached_file :dir_image, styles: { medium: "500x500>" }
   validates_attachment_content_type :dir_image, content_type: /\Aimage\/.*\z/
 
 end
