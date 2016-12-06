@@ -1,10 +1,11 @@
-- if @recipe.present?
-  #recipes.transitions-enabled
-    - @recipe.each do |r|
-      .box.panel.panel-default
-        = link_to (image_tag r.image.url), r
-        .panel-body
-          %h2= link_to r.title, r
-- else
-  %h3 There are no posts containing the title:
-  %h3= params[:search]
+.col-md-12
+  - if @recipe.present?
+    #recipes.transitions-enabled
+      - @recipe.each do |r|
+        .box.panel.panel-default
+          = link_to (image_tag r.image.url), r
+          .panel-body
+            %h2= link_to r.title, r
+  - else
+    %h3 There are no posts containing the title:
+    %h3= params[:search]

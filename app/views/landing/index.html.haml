@@ -1,8 +1,10 @@
-.row
-%h1 Find Something Delicious & Loved
-= link_to 'Browse All Recipes', recipes_path, class: "btn btn-default add-button btn-xs"
-.form-group
-  = form_tag(recipes_path, method: :get, id: "search-form") do
-    = text_field_tag :search, params[:search], placeholder: "keyword search"
+#landing
+  .wrapper
+    %h1 Find Something Delicious & Loved
     %br/
-    = submit_tag "Search"
+    .form-group
+      = form_tag(recipes_path, method: :get, id: "search-form") do
+        = text_field_tag :search, params[:search], placeholder: "keyword search"
+        = submit_tag "Search"
+    .row
+    = link_to 'Browse All Recipes', recipes_path, class: "btn btn-default"
