@@ -3,13 +3,6 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except:[:index, :show]
 
   def index
-    @recipe = Recipe.where(nil)
-    filtering_params(params).each do |key, value|
-      @recipe = @recipe.public_send(key, value) if value.present?
-    end
-  end
-
-  def index
     @recipe = Recipe.all
     if params[:search]
       @recipe = Recipe.search(params[:search]).order("created_at DESC")
