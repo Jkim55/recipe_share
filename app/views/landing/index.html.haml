@@ -1,11 +1,12 @@
 #landing
+.col-md-7
   .wrapper
     %h1 Find Something Delicious & Loved
     %br/
     .form-inline
       .form-group
       = form_tag(recipes_path, method: :get, id: "search-form") do
-        = text_field_tag :search, params[:search], placeholder: "keyword search", class: 'form-control'
+        = text_field_tag :search, params[:search], placeholder: "Search For Recipes", class: 'form-control'
         = submit_tag "Search", class: "btn btn-default"
     %br/
     .form-group

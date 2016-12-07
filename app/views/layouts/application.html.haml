@@ -1,7 +1,7 @@
 !!! 5
 %html
 %head
-  %title Family Dish / Share Dish
+  %title NomShares
   = csrf_meta_tags
   = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
   = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
@@ -12,7 +12,7 @@
   %nav.navbar.navbar-default
     .container
       .row
-        .navbar-brand= link_to "Nom Shares", recipes_path
+        .navbar-brand= link_to "NomShares", recipes_path
         %ul.nav.navbar-nav.navbar-right
           %form.navbar-form.navbar-right.form-group
             = form_tag(recipes_path, method: :get, id: "search-form") do
