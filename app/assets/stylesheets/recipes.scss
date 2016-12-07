@@ -38,56 +38,50 @@ $lightgray: rgba(233, 233, 233, .8);
   .panel {
     margin: 20px;
     border: none;
-  }
-  .panel-heading {
-    padding: 0;
-    p {
-      margin: 0 35px 10px 0;
-      font-size: small;
-      font-weight: 200;
-    }
-  }
-  .pin_image {
-    img {
-      display: block;
-      max-width:750px;
-      max-height:500px;
-      width: auto;
-      height: auto;
-    }
-  }
-  .panel-body {
-    padding: 35px;
-    h1 {
-      margin: 0 0 10px 0;
-    }
-    .description {
-      color: #868686;
-      line-height: 1.75;
+    .panel-heading {
       margin: 0;
+      padding: 0 !important;
+      p {
+        margin: 0 35px 10px 0;
+        font-size: small;
+        font-weight: 200;
+      }
     }
-  }
-  .panel-footer {
-    padding: 20px 35px;
-    p {
-      margin: 0;
+    .pin_image {
+      img {
+        display: block;
+        max-width:750px;
+        max-height:500px;
+        width: auto;
+        height: auto;
+      }
     }
-    span {
-      padding-right: 8px;
+    .panel-body {
+      padding: 35px;
+      h1 {
+        margin: 0 0 10px 0;
+      }
+      .description {
+        color: #868686;
+        line-height: 1.75;
+        margin: 0;
+      }
+    }
+    .panel-footer {
+      padding: 20px 35px;
+      p {
+        margin: 0;
+      }
+      span {
+        padding-right: 8px;
+      }
     }
   }
 }
 
-#recipe-edit {
-  .main {
-    margin: 20px;
-  }
-  .current_image {
-    img {
-      display: block;
-      margin: 20px 0;
-    }
-  }
+.panel-heading {
+  margin: 0;
+  padding: 10px !important;
 }
 
 textarea {
@@ -105,4 +99,14 @@ textarea.description {
 
 input.form-control.ingredient {
   min-width: 300px;
+}
+
+.add-button {
+  color: white !important;
+  background-color: rgb(189, 30, 35) !important;
+}
+
+.rdetails {
+  font-weight: 200;
+  color: rgba(0, 0, 0, .6),
 }

@@ -35,6 +35,16 @@
        -o-transition-property: none;
           transition-property: none;
 }
+/* line 5, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/comments.scss */
+.comment_detail {
+  font-weight: 200;
+}
+
+/* line 8, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/comments.scss */
+.comment_icon {
+  color: rgba(189, 30, 35, 0.8);
+  font-weight: 100;
+}
 /* line 6, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/landing.scss */
 .wrapper {
   background-color: rgba(233, 233, 233, 0.8);
@@ -93,18 +103,19 @@ input.form-control {
   margin: 20px;
   border: none;
 }
-/* line 42, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .panel-heading {
-  padding: 0;
+/* line 41, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
+#recipe-show .panel .panel-heading {
+  margin: 0;
+  padding: 0 !important;
 }
 /* line 44, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .panel-heading p {
+#recipe-show .panel .panel-heading p {
   margin: 0 35px 10px 0;
   font-size: small;
   font-weight: 200;
 }
 /* line 51, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .pin_image img {
+#recipe-show .panel .pin_image img {
   display: block;
   max-width: 750px;
   max-height: 500px;
@@ -112,61 +123,69 @@ input.form-control {
   height: auto;
 }
 /* line 59, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .panel-body {
+#recipe-show .panel .panel-body {
   padding: 35px;
 }
 /* line 61, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .panel-body h1 {
+#recipe-show .panel .panel-body h1 {
   margin: 0 0 10px 0;
 }
 /* line 64, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .panel-body .description {
+#recipe-show .panel .panel-body .description {
   color: #868686;
   line-height: 1.75;
   margin: 0;
 }
 /* line 70, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .panel-footer {
+#recipe-show .panel .panel-footer {
   padding: 20px 35px;
 }
 /* line 72, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .panel-footer p {
+#recipe-show .panel .panel-footer p {
   margin: 0;
 }
 /* line 75, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-show .panel-footer span {
+#recipe-show .panel .panel-footer span {
   padding-right: 8px;
 }
 
 /* line 82, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-edit .main {
-  margin: 20px;
-}
-/* line 86, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
-#recipe-edit .current_image img {
-  display: block;
-  margin: 20px 0;
+.panel-heading {
+  margin: 0;
+  padding: 10px !important;
 }
 
-/* line 93, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
+/* line 87, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
 textarea {
   min-height: 100px;
 }
 
-/* line 97, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
+/* line 91, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
 textarea.description {
   min-width: 300px;
 }
 
-/* line 101, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
+/* line 95, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
 .collection_check_boxes {
   padding-right: 15px;
   padding-left: 5px;
 }
 
-/* line 106, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
+/* line 100, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
 input.form-control.ingredient {
   min-width: 300px;
+}
+
+/* line 104, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
+.add-button {
+  color: white !important;
+  background-color: #bd1e23 !important;
+}
+
+/* line 109, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
+.rdetails {
+  font-weight: 200;
+  color: rgba(0, 0, 0, 0.6);
 }
 @charset "UTF-8";
 /*

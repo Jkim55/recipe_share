@@ -11,7 +11,7 @@
               .col-md-12
                 %h1= @recipe.title
               .col-md-12
-                %p Shared by #{@recipe.user.username}
+                %p.rdetails Shared by #{@recipe.user.username}
 
               .col-md-12
                 %p
@@ -24,21 +24,21 @@
               .col-md-12
                 %br/
                 %p.description= @recipe.description
-                %p #{@recipe.serving} servings
+                %p.rdetails #{@recipe.serving} servings
 
                 %h4 Dietary Restrictions
                 - if @recipe.categories.length == 0
-                  %p No Dietary Accommodations Listed
+                  %p.small.rdetails No Dietary Accommodations Listed
                 - else
                   - @recipe.categories.each do |c|
-                    %p= c.name
+                    %p.small.rdetails= c.name
 
                 %h4 Meal/Course
                 - if @recipe.courses.length == 0
-                  %p No Courses Indicated
+                  %p.small.rdetails No Courses Indicated
                 - else
                   - @recipe.courses.each do |c|
-                    %p= c.name
+                    %p.small.rdetails= c.name
 
       .panel-body
         .row
