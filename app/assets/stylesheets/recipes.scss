@@ -34,7 +34,7 @@ $lightgray: rgba(233, 233, 233, .8);
 }
 
 
-#recipe_show {
+#recipe-show {
   .panel {
     margin: 20px;
     border: none;
@@ -78,7 +78,7 @@ $lightgray: rgba(233, 233, 233, .8);
   }
 }
 
-#recipe_edit {
+#recipe-edit {
   .main {
     margin: 20px;
   }
@@ -98,11 +98,11 @@ textarea.description {
   min-width: 300px;
 }
 
-input.form-control.ingredient {
-  min-width: 300px;
-}
-
 .collection_check_boxes {
   padding-right: 15px;
   padding-left: 5px;
+}
+
+input.form-control.ingredient {
+  min-width: 300px;
 }
