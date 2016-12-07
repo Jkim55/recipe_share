@@ -47,6 +47,11 @@
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
+/* line 18, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/landing.scss */
+input.form-control {
+  min-width: 350px;
+}
 /* line 6, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/recipes.scss */
 #recipes {
   background-color: rgba(233, 233, 233, 0.8);
@@ -9020,4 +9025,6 @@ h1, h2, h3, h4, h5, h6 {
 /* line 67, /Users/JiggyT/Desktop/recipe_share/app/assets/stylesheets/application.css.scss */
 .alert {
   border: 1px tomato solid;
+  background-color: rgba(255, 99, 71, 0.65);
+  font-weight: bold;
 }
