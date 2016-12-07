@@ -26,10 +26,12 @@
 
   .form-check
     = f.label "Dietary Restrictions"
+    %br/
     = f.collection_check_boxes :category_ids, Category.all, :id, :name, { prompt: "Choose dietary restriction(s)" }, input_html: { class: 'form-check-input'}, label: false
 
   .form-check
     = f.label "Course/Meal", input_html: { class: 'form-check-label'}
+    %br/
     = f.collection_check_boxes :course_ids, Course.all, :id, :name, { prompt: "Choose a course", selected: :course_ids}, input_html: { class: 'form-check-input'}, label: false
 
   .form-group
@@ -42,7 +44,6 @@
           = render 'ingredient_fields', f: ingredient
         .links
         = link_to_add_association 'Add Ingredient', f, :ingredients, class: "btn btn-default add-button btn-xs"
-  .form-group
     .col-md-6
       .row
         %h3 Directions

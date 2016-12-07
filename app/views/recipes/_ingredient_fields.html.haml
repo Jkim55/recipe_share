@@ -2,12 +2,14 @@
   .nested-fields
     .row
       .form-group
-      = f.label "Description"
-      = f.input :name, input_html: { class: 'form-control' }, label: false
+        = f.label "Description"
+        %br/
+        = f.input :name, input_html: { class: 'form-control ingredient' }, label: false
     .row
       .form-group
-      = f.label "Attach an Image"
-      = f.file_field :image, input_html: { class: 'ingredient_field' }, label: false
+        = f.label "Attach an Image"
+        %br/
+        = f.file_field :image, input_html: { class: 'ingredient_field' }, label: false
     .row
       .form-group
-      = link_to_remove_association "Remove", f, class: "form-button btn btn-default btn-xs"
+        = link_to_remove_association "Remove", f, class: "form-button btn btn-default btn-xs"

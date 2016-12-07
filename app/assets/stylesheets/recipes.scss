@@ -51,7 +51,7 @@ $lightgray: rgba(233, 233, 233, .8);
     img {
       display: block;
       max-width:750px;
-      max-height:450px;
+      max-height:500px;
       width: auto;
       height: auto;
     }
@@ -95,6 +95,14 @@ textarea {
 }
 
 textarea.description {
-  min-height: 100px;
-  min-width: 35em
+  min-width: 300px;
+}
+
+input.form-control.ingredient {
+  min-width: 300px;
+}
+
+.collection_check_boxes {
+  padding-right: 15px;
+  padding-left: 5px;
 }

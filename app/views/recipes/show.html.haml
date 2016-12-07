@@ -48,7 +48,12 @@
               %p
               %span= ingredient.name
               - if ingredient.image?
-                %span= link_to glyph(:camera), ingredient.image.url(:medium), data: {toggle: "modal", target: "#modal"}
+                %span= link_to glyph(:camera), ingredient.image.url(:medium), remote: true, data: {toggle: "modal", target: "#ing-img-modal"}
+              .modal.fade#ing-img-modal{"role"=>"dialog", "aria-labelledby" => "$dir-img-modal-label", "aria-hidden" => "true"}
+                .modal-dialog
+                  .modal-content
+                  = image_tag ingredient.image.url(:medium)
+
 
           .col-md-8
             %h2 Directions
@@ -56,9 +61,21 @@
               %p
               %span= direction.step
               - if direction.attachment?
-                %span= link_to glyph(:facetime_video), direction.attachment.url(:medium), controls: true, style: "max-width: 100%;"
+                %span= link_to glyph(:facetime_video), direction.attachment.url(:medium), controls: true, style: "max-width: 100%;", data: {toggle: "modal", target: "#vid-modal"}
+              .modal.fade#vid-modal{"role"=>"dialog", "aria-labelledby" => "${1:mymodal}Label", "aria-hidden" => "true"}
+                .modal-dialog
+                  .modal-content
+                  = video_tag direction.attachment.url(:medium), controls: true, style: "max-height: 100%;"
+
               - if direction.dir_image?
-                %span= link_to glyph(:camera), direction.dir_image.url(:medium)
+                %span= link_to glyph(:camera), direction.dir_image.url(:medium), remote: true, data: {toggle: "modal", target: "#dir-img-modal"}
+              .modal.fade#dir-img-modal{"role"=>"dialog", "aria-labelledby" => "$dir-img-modal-label", "aria-hidden" => "true"}
+                .modal-dialog
+                  .modal-content
+                  = image_tag direction.dir_image.url(:medium)
+
+
+
 
       .panel-footer
         .row
