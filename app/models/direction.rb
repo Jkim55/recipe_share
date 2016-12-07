@@ -14,7 +14,7 @@ class Direction < ApplicationRecord
 		thumb: {geometry: "100x100#", format:'jpg', time: 10}
 	}, processors: [:transcoder]
 
-	validates_attachment_content_type :attachment, content_type: /\Avideo\/.*\Z/
+	validates_attachment_content_type :attachment, content_type: ["video/mp4", "video.mov", "video/mpeg","video/mpeg4"]
 	validates_attachment :attachment, size: {less_than: 130.megabytes}
 
   has_attached_file :dir_image, styles: { medium: "500x500>" }
