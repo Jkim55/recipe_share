@@ -48,8 +48,8 @@
               %p
               %span= ingredient.name
               - if ingredient.image?
-                %span= link_to glyph(:camera), ingredient.image.url(:medium), remote: true, data: {toggle: "modal", target: "#ing-img-modal"}
-              .modal.fade#ing-img-modal{"role"=>"dialog", "aria-labelledby" => "$dir-img-modal-label", "aria-hidden" => "true"}
+                %span= link_to glyph(:camera), ingredient.image.url(:medium), remote: true, data: {toggle: "modal", target: "[did=#{ingredient.id}]"}
+              .modal.fade{"role"=>"dialog", "aria-labelledby" => "$dir-img-modal-label", "aria-hidden" => "true", did: "#{ingredient.id}"}
                 .modal-dialog
                   .modal-content
                   = image_tag ingredient.image.url(:medium)
