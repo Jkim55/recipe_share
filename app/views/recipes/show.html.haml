@@ -68,8 +68,8 @@
                   = video_tag direction.attachment.url(:medium), controls: true, style: "max-height: 100%;"
 
               - if direction.dir_image?
-                %span= link_to glyph(:camera), direction.dir_image.url(:medium), remote: true, data: {toggle: "modal", target: "#dir-img-modal"}
-              .modal.fade#dir-img-modal{"role"=>"dialog", "aria-labelledby" => "$dir-img-modal-label", "aria-hidden" => "true"}
+                %span= link_to glyph(:camera), direction.dir_image.url(:medium), remote: true, data: {toggle: "modal", target: "[did=#{direction.id}]"}
+              .modal.fade#dir-img-modal{"role"=>"dialog", "aria-labelledby" => "$dir-img-modal-label", "aria-hidden" => "true", did: "#{direction.id}"}
                 .modal-dialog
                   .modal-content
                   = image_tag direction.dir_image.url(:medium)
