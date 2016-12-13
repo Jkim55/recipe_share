@@ -61,8 +61,8 @@
               %p
               %span= direction.step
               - if direction.attachment?
-                %span= link_to glyph(:facetime_video), direction.attachment.url(:medium), controls: true, style: "max-width: 100%;", data: {toggle: "modal", target: "#[did=${direction.id}]"}
-              .modal.fade#vid-modal{"role"=>"dialog", "aria-labelledby" => "${1:mymodal}Label", "aria-hidden"=> "true", did: "${direction.id}"}
+                %span= link_to glyph(:facetime_video), direction.attachment.url(:medium), controls: true, style: "max-width: 100%;", data: {toggle: "modal", target: "#[did=#{direction.id}]"}
+              .modal.fade#vid-modal{"role"=>"dialog", "aria-labelledby" => "#{1:mymodal}Label", "aria-hidden"=> "true", did: "#{direction.id}"}
                 .modal-dialog
                   .modal-content
                   = video_tag direction.attachment.url(:medium), controls: true, style: "max-height: 100%;"
